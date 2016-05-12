@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+<h1>TransportRX API</h1>
+<br>
+<h2>Register new users:
+</h2>
+<h3>POST</h3>
+<br><p>curl --data-urlencode "name=Leo N" --data-urlencode "password=space" --data-urlencode "role=Transporter" --data-urlencode "user_name=SPOCK"  -H "Accept: application/json" https://transportrx-jsolis.appspot.com/register</p>
+<br>
+
+<h2>Login users:</h2>
+<h3>POST (Will generate session token and return it in the JSON response)</h3>
+<br><p>curl  --data-urlencode "password=space"  --data-urlencode "user_name=SPOCK"  -H "Accept: application/json" https://transportrx-jsolis.appspot.com/login</p>
+<br>
+
+<h2>Validate users (session tokens expire after 4 hours):</h2>
+<h3>POST</h3>
+<br><p>curl  --data-urlencode "session_id=ZDU1Y2JmMjEwZjE3NWY0YTM3OTE2ZWFmZTZjMDRmMGQ="  --data-urlencode "user_name=SPOCK"  -H "Accept: application/json" https://transportrx-jsolis.appspot.com/validate</p>
+<br>
+
+<h2>GET all transporters:
+</h2>
+<br><p>curl -H "Accept: application/json" 'https://transportrx-jsolis.appspot.com/transporter?user_name=SPOCK&session_id=ZDU1Y2JmMjEwZjE3NWY0YTM3OTE2ZWFmZTZjMDRmMGQ='</p>
+<br>
+
+<h2>GET All Transport Requests:</h2>
+<br><p>curl -H "Accept: application/json" http://assign3-jsolis.appspot.com/transport_requests</p>
+<br>
+
+<h2>GET active or inactive transporters (edit the filter option)
+</h2>
+<br><p>curl -H "Accept: application/json" 'https://transportrx-jsolis.appspot.com/transporter?user_name=SPOCK&session_id=ZTQyYWQ5M2Y3NDkxZjJhMzhiYTJlYzE0MTZlZjZmNTU=&filter=active'</p>
+<br>
+
+<h2>PUT (Update transporter status):</h2>
+<br><p>curl --data-urlencode "status=Active" --data-urlencode "session_id=ZDU1Y2JmMjEwZjE3NWY0YTM3OTE2ZWFmZTZjMDRmMGQ="  --data-urlencode "user_name=SPOCK" -X PUT https://transportrx-jsolis.appspot.com/transporter_update/5066702320566272</p>
+<br>
+
+<h2>POST New Transport Request:
+</h2>
+<br><p>curl --data-urlencode "session_id=ZDU1Y2JmMjEwZjE3NWY0YTM3OTE2ZWFmZTZjMDRmMGQ="  --data-urlencode "user_name=SPOCK" --data-urlencode "patient_name=JOHN QUACK" --data-urlencode "patient_mrn=1234567879" --data-urlencode "origin=ER5" --data-urlencode "destination=room789" --data-urlencode "mode=BED" -H "Accept: application/json" https://transportrx-jsolis.appspot.com/transport_requests</p>
+<br>
+
+<h2>POST Edit Specific Request:
+</h2>
+<br><p>curl --data-urlencode "session_id=ZDU1Y2JmMjEwZjE3NWY0YTM3OTE2ZWFmZTZjMDRmMGQ="  --data-urlencode "user_name=SPOCK" --data-urlencode "patient_name=JOHN B" --data-urlencode "patient_mrn=12548854" --data-urlencode "origin=ER5" --data-urlencode "destination=room789" --data-urlencode "mode=BED" -H "Accept: application/json" https://transportrx-jsolis.appspot.com/transport_requests/5189804673204224</p>
+<br>
+
+<h2>GET All Transport Requests:</h2>
+<br><p>curl -H "Accept: application/json"  'https://transportrx-jsolis.appspot.com/transport_requests?user_name=SPOCK&session_id=ZTQyYWQ5M2Y3NDkxZjJhMzhiYTJlYzE0MTZlZjZmNTU='</p>
+<br>
+
+<h2>GET with filters (pending, current, and transporter)</h2>
+<br><p>curl -H "Accept: application/json"  'https://transportrx-jsolis.appspot.com/transport_requests?user_name=SPOCK&session_id=ZTQyYWQ5M2Y3NDkxZjJhMzhiYTJlYzE0MTZlZjZmNTU=&filter=transporter'</p>
+<br>
+
+<h2>PUT(Change request status):</h2>
+<br><p>curl --data-urlencode "status=delayed" --data-urlencode "reason=medication" --data-urlencode "session_id=ZDU1Y2JmMjEwZjE3NWY0YTM3OTE2ZWFmZTZjMDRmMGQ="  --data-urlencode "user_name=SPOCK" -X PUT https://transportrx-jsolis.appspot.com/transport_request_update/5154545407623168</p>
+<br>
+
+<h2>PUT (Assign transporters to transport requests):</h2>
+<br><p>curl --data-urlencode "session_id=ZDU1Y2JmMjEwZjE3NWY0YTM3OTE2ZWFmZTZjMDRmMGQ="  --data-urlencode "user_name=SPOCK" -X PUT https://transportrx-jsolis.appspot.com/transport_request_assign/5154545407623168</p>
+<br>
+
+<h2>DELETE Transport Request:</h2>
+<br><p>curl -X DELETE https://transportrx-jsolis.appspot.com/transport_requests/5732568548769792</p>
+<br>
+
+<h2>Account System:</h2>
+<br><p>I implemented my own account system.  When a new user attempts to create an account, the server will verify that the chosen username does not already exist.
+    If not, it creates the new user entity with the specified name, role, username, and password. If they have entered their role as “transporter”,
+    it will also create a transporter entity with their name, and username. When a user logs in with their correct username and password,
+    a session token will be generated and returned in the JSON response. This session token will expire after 4 hours and the user will need to re-login to generate a new token.
+    The session token is required for all GET, POST, and PUT requests. The android app will also use the session id and username that is stored in shared preferences to validate that the session id is still valid.
+    If the session id and username combo is ever invalid, it will deny the user whatever request they have made.
+    The DELETE request is the only HTTP verb that does not require authentication as it will not be used in the real application but is implemented for assignment requirement purposes. </p>
+<br>
+
+
+
+</body>
+</html>

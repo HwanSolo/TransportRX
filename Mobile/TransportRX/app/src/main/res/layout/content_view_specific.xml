@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.solisjoregonstate.transportrx.ViewSpecific"
+    tools:showIn="@layout/activity_view_specific">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Patient: "
+        android:id="@+id/patient_textview"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/date_textview"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="MRN:"
+        android:id="@+id/mrn_textview"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/patient_textview"
+        android:layout_alignLeft="@+id/patient_textview"
+        android:layout_alignStart="@+id/patient_textview" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Origin"
+        android:id="@+id/origin_textview"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/mrn_textview"
+        android:layout_alignLeft="@+id/mrn_textview"
+        android:layout_alignStart="@+id/mrn_textview" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Destination:"
+        android:id="@+id/destination_textview"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/origin_textview"
+        android:layout_alignLeft="@+id/origin_textview"
+        android:layout_alignStart="@+id/origin_textview" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Mode: "
+        android:id="@+id/mode_textview"
+        android:layout_below="@+id/destination_textview"
+        android:layout_alignLeft="@+id/destination_textview"
+        android:layout_alignStart="@+id/destination_textview"
+        android:layout_marginTop="29dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Status: "
+        android:id="@+id/status_textview"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/creator_textview"
+        android:layout_alignRight="@+id/patient_textview"
+        android:layout_alignEnd="@+id/patient_textview" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Transporters: "
+        android:id="@+id/transporters_textview"
+        android:layout_below="@+id/status_textview"
+        android:layout_alignLeft="@+id/status_textview"
+        android:layout_alignStart="@+id/status_textview"
+        android:layout_marginTop="29dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Requested by:"
+        android:id="@+id/creator_textview"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Date: "
+        android:id="@+id/date_textview"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/creator_textview"
+        android:layout_alignStart="@+id/creator_textview" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Status"
+        android:id="@+id/update_button"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_alignBottom="@+id/status_textview"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Request"
+        android:id="@+id/edit_button"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/transporters_textview"
+        android:layout_alignLeft="@+id/transporters_textview"
+        android:layout_alignStart="@+id/transporters_textview" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assign to me"
+        android:id="@+id/assign_button"
+        android:layout_alignTop="@+id/edit_button"
+        android:layout_alignLeft="@+id/update_button"
+        android:layout_alignStart="@+id/update_button" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:id="@+id/verify_button"
+        android:layout_alignTop="@+id/patient_textview"
+        android:layout_alignRight="@+id/update_button"
+        android:layout_alignEnd="@+id/update_button" />
+</RelativeLayout>

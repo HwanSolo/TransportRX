@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.solisjoregonstate.transportrx">
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ambulance"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BarcodeCaptureActivity"
+            android:label="Read Barcode" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login_activity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.Dark">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.solisjoregonstate.transportrx.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".MyDashboardActivity"
+            android:label="@string/title_activity_my_dashboard"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.solisjoregonstate.transportrx.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".CreateRequest"
+            android:label="@string/title_activity_create_request"
+            android:parentActivityName=".MyDashboardActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.solisjoregonstate.transportrx.MyDashboardActivity" />
+        </activity>
+        <activity
+            android:name=".ViewRequestsActivity"
+            android:label="@string/title_activity_view_requests"
+            android:parentActivityName=".MyDashboardActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.solisjoregonstate.transportrx.MyDashboardActivity" />
+        </activity>
+        <activity
+            android:name=".ViewSpecific"
+            android:label="@string/title_activity_view_specific"
+            android:parentActivityName=".ViewRequestsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.solisjoregonstate.transportrx.ViewRequestsActivity" />
+        </activity>
+        <activity
+            android:name=".ViewTransporterActivity"
+            android:label="@string/title_activity_view_transporter"
+            android:parentActivityName=".MyDashboardActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.solisjoregonstate.transportrx.MyDashboardActivity" />
+        </activity>
+    </application>
+
+</manifest>
